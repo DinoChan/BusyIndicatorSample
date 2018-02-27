@@ -112,6 +112,7 @@
   <ItemGroup>
     <Compile Include="Activation\ActivationHandler.cs" />
     <Compile Include="BusyIndicator.cs" />
+    <Compile Include="ExtendBusyIndicator.cs" />
     <Compile Include="Helpers\Json.cs" />
     <Compile Include="Helpers\SettingsStorageExtensions.cs" />
     <Compile Include="Models\SampleImage.cs" />
@@ -151,6 +152,7 @@
     <Compile Include="Views\WebViewPage.xaml.cs">
       <DependentUpon>WebViewPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VisualStates.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">

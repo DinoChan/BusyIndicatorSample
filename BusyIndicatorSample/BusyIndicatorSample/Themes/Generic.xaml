@@ -1,17 +1,176 @@
-<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:BusyIndicatorSample">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="using:BusyIndicatorSample"
+                    xmlns:system="using:System">
 
-    <Style TargetType="local:BusyIndicator" >
+
+    <Style TargetType="local:BusyIndicator">
+        <Setter Property="BusyContent"
+                Value="Please wait..." />
+        <Setter Property="IsTabStop"
+                Value="False" />
+        <Setter Property="OverlayStyle">
+            <Setter.Value>
+                <Style TargetType="Rectangle">
+                    <Setter Property="Fill"
+                            Value="{ThemeResource ApplicationForegroundThemeBrush}" />
+                    <Setter Property="Opacity"
+                            Value="0.2" />
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ProgressRingStyle">
+            <Setter.Value>
+                <Style TargetType="ProgressRing">
+                    <Setter Property="Height"
+                            Value="50" />
+                    <Setter Property="Width"
+                            Value="50" />
+                    <Setter Property="Margin"
+                            Value="8,8,8,0" />
+                </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="DisplayAfter"
+                Value="00:00:00.1" />
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalAlignment"
+                Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalContentAlignment"
+                Value="Stretch" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:BusyIndicator">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
-                    </Border>
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="VisibilityStates">
+                                <VisualState x:Name="Hidden">
+                                    <VisualState.Setters>
+                                        <Setter Target="overlay.(UIElement.Visibility)"
+                                                Value="Collapsed" />
+                                        <Setter Target="busycontent.(UIElement.Visibility)"
+                                                Value="Collapsed" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Visible" />
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="BusyStatusStates">
+                                <VisualState x:Name="Idle" />
+                                <VisualState x:Name="Busy">
+                                    <VisualState.Setters>
+                                        <Setter Target="content.(Control.IsEnabled)"
+                                                Value="False" />
+                                    </VisualState.Setters>
+                                </VisualState>
+
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <ContentControl x:Name="content"
+                                        Content="{TemplateBinding Content}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        <Rectangle x:Name="overlay"
+                                   Style="{TemplateBinding OverlayStyle}" />
+                        <ContentPresenter x:Name="busycontent">
+                            <Grid HorizontalAlignment="Center"
+                                  VerticalAlignment="Center">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <ProgressRing x:Name="ProgressRing"
+                                              IsActive="True"
+                                              Style="{TemplateBinding ProgressRingStyle}" />
+
+                                <ContentPresenter Content="{TemplateBinding BusyContent}"
+                                                  ContentTemplate="{TemplateBinding BusyContentTemplate}"
+                                                  Grid.Row="1"
+                                                  FontSize="15"
+                                                  HorizontalAlignment="Center"
+                                                  Foreground="{ThemeResource SystemControlHighlightAccentBrush}" />
+                            </Grid>
+                        </ContentPresenter>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="local:ExtendBusyIndicator">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:ExtendBusyIndicator">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="VisibilityStates">
+                                <VisualState x:Name="Hidden">
+                                    <VisualState.Setters>
+                                        <Setter Target="BusyLayer.(UIElement.Visibility)"
+                                                Value="Collapsed" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Visible" />
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="BusyStatusStates">
+                                <VisualState x:Name="Idle" />
+                                <VisualState x:Name="Busy">
+                                    <VisualState.Setters>
+                                        <Setter Target="content.(Control.IsEnabled)"
+                                                Value="False" />
+                                    </VisualState.Setters>
+                                </VisualState>
+
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <ContentControl x:Name="content"
+                                        Content="{TemplateBinding Content}"
+                                        ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        <Grid x:Name="BusyLayer">
+                            <Rectangle x:Name="overlay"
+                                       Style="{TemplateBinding OverlayStyle}" />
+                            <ContentPresenter x:Name="busycontent">
+                                <Grid HorizontalAlignment="Center"
+                                      VerticalAlignment="Center">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <ProgressRing x:Name="ProgressRing"
+                                                  IsActive="True"
+                                                  Style="{TemplateBinding ProgressRingStyle}" />
+
+                                    <ContentPresenter Content="{TemplateBinding BusyContent}"
+                                                      ContentTemplate="{TemplateBinding BusyContentTemplate}"
+                                                      Grid.Row="1"
+                                                      FontSize="15"
+                                                      HorizontalAlignment="Center"
+                                                      Foreground="{ThemeResource SystemControlHighlightAccentBrush}" />
+                                </Grid>
+                            </ContentPresenter>
+                            <Grid Background="Black"
+                                  x:Name="TopElement"
+                                  MinHeight="100" />
+                            <Grid Background="Black"
+                                  x:Name="BottomElemet"
+                                  MinHeight="100">
+                                <ContentPresenter x:Name="BusyInformationElement"
+                                                  Content="{TemplateBinding BusyInformation}"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center" />
+                                <ContentPresenter x:Name="IdleInformationElement"
+                                                  Content="{TemplateBinding IdleInformation}"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center" />
+                            </Grid>
+                        </Grid>
+
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
