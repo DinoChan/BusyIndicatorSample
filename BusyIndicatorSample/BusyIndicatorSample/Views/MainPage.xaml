@@ -44,7 +44,9 @@
 
         <Grid Grid.Row="1"
               Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-            <busyIndicatorSample:ExtendBusyIndicator x:Name="BusyIndicator">
+            <busyIndicatorSample:ExtendBusyIndicator x:Name="BusyIndicator" 
+                                                     BusyInformation="Loading Some Information."
+                                                     IdleInformation="Completed.">
                 <Button HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Content="Login"
