@@ -43,15 +43,44 @@
                    Style="{StaticResource PageTitleStyle}" />
 
         <Grid Grid.Row="1"
+              x:Name="Root"
               Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
             <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
                 Place your content here.-->
-            <busyIndicatorSample:BusyIndicator x:Name="BusyIndicator">
-                <Button HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        Content="Login"
-                        Click="Button_Click" Margin="0,0,0,150"/>
-            </busyIndicatorSample:BusyIndicator>
+            <WebView x:Name="WebView"
+                     Source="https://www.cnblogs.com/" />
+            <busyIndicatorSample:ExtendBusyIndicator x:Name="BusyIndicator"
+                                                     Background="White">
+                <busyIndicatorSample:ExtendBusyIndicator.BusyInformation>
+                    <StackPanel>
+                        <TextBlock Text="十年后"
+                                   HorizontalAlignment="Center" />
+                        <TextBlock Text="10 years later"
+                                   HorizontalAlignment="Center"
+                                   Margin="0,2,0,0" />
+                    </StackPanel>
+                </busyIndicatorSample:ExtendBusyIndicator.BusyInformation>
+                <busyIndicatorSample:ExtendBusyIndicator.IdleInformation>
+                    <StackPanel>
+                        <TextBlock Text="这个网页终于加载完了"
+                                   HorizontalAlignment="Center" />
+                        <TextBlock Text="the Web page finally finished loading."
+                                   HorizontalAlignment="Center"
+                                   Margin="0,2,0,0" />
+                    </StackPanel>
+                </busyIndicatorSample:ExtendBusyIndicator.IdleInformation>
+
+                <Button Style="{StaticResource ButtonRevealStyle}"
+                        Padding="0"
+                        HorizontalAlignment="Center"
+                        Background="Transparent"
+                        Margin="0,0,0,150"
+                        Click="Button_Click">
+                    <Image Source="logo1.png"
+                           Width="80" />
+                </Button>
+            </busyIndicatorSample:ExtendBusyIndicator>
+
         </Grid>
     </Grid>
 </Page>

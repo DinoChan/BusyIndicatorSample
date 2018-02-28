@@ -126,12 +126,12 @@
     <comment>Navigation view item name for Main</comment>
   </data>
   <data name="Bacis_Title.Text" xml:space="preserve">
-    <value>Bacis</value>
-    <comment>Page title for Bacis</comment>
+    <value>Basic</value>
+    <comment>Page title for Basic</comment>
   </data>
   <data name="Shell_Bacis" xml:space="preserve">
-    <value>Bacis</value>
-    <comment>Navigation view item name for Bacis</comment>
+    <value>Basic</value>
+    <comment>Navigation view item name for Basic</comment>
   </data>
   <data name="Sample1_Title.Text" xml:space="preserve">
     <value>Sample1</value>
@@ -169,7 +169,7 @@
     <value>retry</value>
     <comment>Retry button for WebView</comment>
   </data>
-    <data name="WebView_BrowserBackButton.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">    
+  <data name="WebView_BrowserBackButton.[using:Windows.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>Back</value>
     <comment>WebView back button automation name property for WebView</comment>
   </data>
@@ -217,11 +217,11 @@
     <value>ImageGallery</value>
     <comment>Navigation view item name for ImageGallery</comment>
   </data>
-  <data name="Tabbed_Pivot.Text" xml:space="preserve">  
+  <data name="Tabbed_Pivot.Text" xml:space="preserve">
     <value>Tabbed</value>
     <comment>Page title for Tabbed</comment>
   </data>
-  <data name="Tabbed_PivotItem1.Header" xml:space="preserve">  
+  <data name="Tabbed_PivotItem1.Header" xml:space="preserve">
     <value>Item 1</value>
     <comment>First Pivot item title for Tabbed</comment>
   </data>

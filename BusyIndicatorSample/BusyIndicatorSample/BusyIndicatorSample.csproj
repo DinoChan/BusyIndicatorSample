@@ -264,6 +264,9 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Views\15.jpg" />
+    <Content Include="Views\02.jpg" />
+    <Content Include="Views\logo1.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />

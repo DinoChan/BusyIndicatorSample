@@ -34,6 +34,9 @@ namespace BusyIndicatorSample.Views
             BusyIndicator.IsBusy = true;
             await Task.Delay(TimeSpan.FromSeconds(3));
             BusyIndicator.IsBusy = false;
+            
+            Root.Children.Remove(WebView);
+            BusyIndicator.Content = WebView;
         }
     }
 }

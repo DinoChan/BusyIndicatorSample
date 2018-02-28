@@ -47,7 +47,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:BusyIndicator">
-                    <Grid>
+                    <Grid Background="{TemplateBinding Background}">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="VisibilityStates">
                                 <VisualState x:Name="Hidden">
@@ -74,6 +74,7 @@
                         <ContentControl x:Name="content"
                                         Content="{TemplateBinding Content}"
                                         ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        ContentTransitions="{TemplateBinding ContentTransitions}"
                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
                         <Rectangle x:Name="overlay"
@@ -143,7 +144,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:ExtendBusyIndicator">
-                    <Grid>
+                    <Grid Background="{TemplateBinding Background}">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="VisibilityStates">
                                 <VisualStateGroup.Transitions>
@@ -190,16 +191,16 @@
 
                                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
                                                                            Storyboard.TargetName="TopLayer">
-                                                <EasingDoubleKeyFrame KeyTime="0:0:1.5"
+                                                <EasingDoubleKeyFrame KeyTime="0:0:1.8"
                                                                       Value="0" />
-                                                <EasingDoubleKeyFrame KeyTime="0:0:1.6"
+                                                <EasingDoubleKeyFrame KeyTime="0:0:1.9"
                                                                       Value="-100" />
                                             </DoubleAnimationUsingKeyFrames>
                                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"
                                                                            Storyboard.TargetName="BottomLayer">
-                                                <EasingDoubleKeyFrame KeyTime="0:0:1.5"
+                                                <EasingDoubleKeyFrame KeyTime="0:0:1.8"
                                                                       Value="0" />
-                                                <EasingDoubleKeyFrame KeyTime="0:0:1.6"
+                                                <EasingDoubleKeyFrame KeyTime="0:0:1.9"
                                                                       Value="100" />
                                             </DoubleAnimationUsingKeyFrames>
                                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
@@ -211,9 +212,9 @@
                                                                            Storyboard.TargetName="IdleInformationElement">
                                                 <EasingDoubleKeyFrame KeyTime="0:0:0"
                                                                       Value="1" />
-                                                <EasingDoubleKeyFrame KeyTime="0:0:1"
-                                                                      Value="1" />
                                                 <EasingDoubleKeyFrame KeyTime="0:0:1.4"
+                                                                      Value="1" />
+                                                <EasingDoubleKeyFrame KeyTime="0:0:1.6"
                                                                       Value="0" />
                                             </DoubleAnimationUsingKeyFrames>
                                             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)"
@@ -249,6 +250,7 @@
                         <ContentControl x:Name="content"
                                         Content="{TemplateBinding Content}"
                                         ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        ContentTransitions="{TemplateBinding ContentTransitions}"
                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
                         <Grid x:Name="BusyLayer">
